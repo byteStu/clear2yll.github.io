@@ -137,7 +137,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Erlang,函数式编程," />
 
 
 
@@ -150,16 +150,18 @@
 
 
 
-<meta name="description" content="竹杖芒鞋轻胜马">
-<meta property="og:type" content="website">
-<meta property="og:title" content="yuangy&#39;s blog">
-<meta property="og:url" content="http://hellolife.top/index.html">
+<meta name="description" content="##Erlang基础&amp;emsp;&amp;emsp;erlang:函数式编程，消息传递，容错，高并发。">
+<meta name="keywords" content="Erlang,函数式编程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Erlang基础">
+<meta property="og:url" content="http://hellolife.top/2018/08/01/erlang基础/index.html">
 <meta property="og:site_name" content="yuangy&#39;s blog">
-<meta property="og:description" content="竹杖芒鞋轻胜马">
+<meta property="og:description" content="##Erlang基础&amp;emsp;&amp;emsp;erlang:函数式编程，消息传递，容错，高并发。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-08-01T07:50:40.983Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="yuangy&#39;s blog">
-<meta name="twitter:description" content="竹杖芒鞋轻胜马">
+<meta name="twitter:title" content="Erlang基础">
+<meta name="twitter:description" content="##Erlang基础&amp;emsp;&amp;emsp;erlang:函数式编程，消息传递，容错，高并发。">
 
 
 
@@ -189,13 +191,13 @@
 
 
 
-  <link rel="canonical" href="http://hellolife.top/"/>
+  <link rel="canonical" href="http://hellolife.top/2018/08/01/erlang基础/"/>
 
 
 
 
 
-  <title>yuangy's blog</title>
+  <title>Erlang基础 | yuangy's blog</title>
   
 
 
@@ -214,8 +216,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -308,9 +309,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -340,9 +341,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/01/erlang基础/" itemprop="url">Erlang基础</a></h1>
+          <h1 class="post-title" itemprop="name headline">Erlang基础</h1>
         
 
         <div class="post-meta">
@@ -396,6 +395,11 @@
           
 
           
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本站总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
 
           
             <div class="post-wordcount">
@@ -445,17 +449,72 @@
       
 
       
-        
-          <p>##Erlang基础<br>&emsp;&emsp;erlang:函数式编程，消息传递，容错，高并发。</p>
+        <p>##Erlang基础<br>&emsp;&emsp;erlang:函数式编程，消息传递，容错，高并发。</p>
 <hr>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/08/01/erlang基础/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+<a id="more"></a>
+<p>###语句和注释</p>
+<ol>
+<li>“ . ”作为一条语句结束（参考英语句子）</li>
+<li>“ ; ”连接的语句表示“或”，“ , ”连接的语句表示“且” (参考when关卡)</li>
+<li>“%”来做行注释<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1&gt; F = fun(A,B) when is_number(A),is_number(B) -&gt; A+B end. </span><br><span class="line">#Fun&lt;erl_eval.12.52032458&gt;</span><br><span class="line">2&gt; F(3,4).  </span><br><span class="line">7</span><br><span class="line">3&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<hr>
+<p>###基本类型</p>
+<ol>
+<li><strong>number：</strong>erlang中的整数是精确到，也就是说不像其他编程语言（java）中有short，int，long的说法。</li>
+<li><strong>浮点数：</strong>erlang在内部使用64位的<em>IEEE754-1985</em>，因此也会存在像C中的取整和精度问题。</li>
+<li><strong>原子：</strong>原子被用来表示常量值（类似java中的枚举），<code>原子是全局性的，而且不需要宏定义或包含文件就能实现，原子以小写字母开头，后接一串字母、数字、下划线、@符号，原子还可以放在单引号&#39;&#39;内，这样定义原子的规则便没那么严格了，例如&#39;Monday&#39;、&#39;+&#39;,另外，原子的值就是原子本身。</code></li>
+<li><strong>元组：</strong>大括号包起来，里面用逗号隔开的一种erlang数据类型，通常元组第一位用一个语义化的原子值占位。</li>
+<li><strong>列表：</strong>被用来存放任意数据类型任意数量的数据类型，类似js中的数组。</li>
+<li><strong>字符串：</strong>双引号包起来，严格来说，erlang中没有字符串，其本质就是列表。所以一般如果你想用真·字符串的时候，用Erlang的Binary类型，这样表示：&lt;&lt;”abc”&gt;&gt;。</li>
+<li><strong>二进制型与位串：</strong>在二进制里使用整数时，必须属于0~255这个范围。二进制型&lt;&lt;”cat”&gt;&gt;是&lt;&lt;99,97,116&gt;&gt;的简写形式，也就是说，这个二进制型是由字符串里这些字符的ASCII编码组成的。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">1&gt; 1. %% 整数</span><br><span class="line">1</span><br><span class="line">2&gt; 1.2 . %% 浮点数</span><br><span class="line">1.2</span><br><span class="line">3&gt; a. %% 原子</span><br><span class="line">a</span><br><span class="line">4&gt; &#123;point,1,2&#125;. %% 元组</span><br><span class="line">&#123;point,1,2&#125;</span><br><span class="line">5&gt; [1,2,3]. %% 列表</span><br><span class="line">[1,2,3]</span><br><span class="line">6&gt; &quot;1,2,3&quot;. %% 字符串</span><br><span class="line">&quot;1,2,3&quot;</span><br><span class="line">7&gt; &lt;&lt;&quot;cat&quot;&gt;&gt;. %% 二进制与位串</span><br><span class="line">&lt;&lt;&quot;cat&quot;&gt;&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<hr>
+<p>###变量与模式匹配<br>erlang中<code>不存在赋值</code>的概念，只有<code>变量绑定值</code>，而且一次绑定不可改变，即“一次性赋值”。变量必须首字母大写。变量与值绑定用“=”表示，称为一次模式匹配操作。<br><strong>模式匹配的一些例子：</strong></p>
+<table>
+<thead>
+<tr>
+<th>模式 = 单位</th>
+<th style="text-align:left">结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> {X,abc} = {123,abc}</td>
+<td style="text-align:left">成功:X=123 </td>
+</tr>
+<tr>
+<td> {X,Y,Z} = {222,def,”cat”}</td>
+<td style="text-align:left">成功：X = 222,Y = def, Z = “cat”</td>
+</tr>
+<tr>
+<td> {X,Y} = {222,def,”cat”}</td>
+<td style="text-align:left">失败：元组的形状不同</td>
+</tr>
+<tr>
+<td> X = true</td>
+<td style="text-align:left">成功：X = true</td>
+</tr>
+<tr>
+<td> [H\</td>
+<td style="text-align:left">T] = [1,2,3,4,5]</td>
+<td>成功: H = 1,T = [2,3,4,5]</td>
+</tr>
+<tr>
+<td> [A,B,C\</td>
+<td style="text-align:left">T] = [a,b,c,d,e,f]</td>
+<td>成功：A=a,B=b,C=c,T=[d,e,f]</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p>###Modules</p>
+<ol>
+<li>模块是Erlang的基本代码单元，模块保存在扩展名为<code>.erl</code>的文件里,而且必须先编译，才能运行模块里的代码。编译后的模块以<code>.beam</code>作为扩展名<center>待续</center></li>
+</ol>
+
       
     </div>
     
@@ -464,23 +523,91 @@
 
     <div>
       
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2018/08/01/erlang基础/">Erlang基础</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 yuangy 的个人博客">yuangy</a></p>
+  <p><span>发布时间:</span>2018年08月01日 - 15:08</p>
+  <p><span>最后更新:</span>2018年08月01日 - 15:08</p>
+  <p><span>原始链接:</span><a href="/2018/08/01/erlang基础/" title="Erlang基础">http://hellolife.top/2018/08/01/erlang基础/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://hellolife.top/2018/08/01/erlang基础/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+    });
+    });  
+</script>
+
+      
     </div>
     
 
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>打赏一下</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="yuangy 微信"/>
+        <p>微信</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="yuangy 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
     
 
     
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Erlang/" rel="tag"><i class="fa fa-tag"></i>Erlang</a>
+          
+            <a href="/tags/函数式编程/" rel="tag"><i class="fa fa-tag"></i>函数式编程</a>
+          
+        </div>
+      
+
+      
+      
+      
 
       
 
       
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -489,14 +616,27 @@
   
   <div>
     
+      <div>
+    
+        <div style="text-align:center;color: #555;font-size:14px;">-------------The End-------------</div>
+    
+</div>
+    
   </div>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_inline_share_toolbox">
+  <script type = "text/javascript" src = "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b602fae046969f1" async = "async" ></script>
+</div>
+
+      
+    </div>
+  </div>
 
 
           </div>
@@ -504,6 +644,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -757,6 +901,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

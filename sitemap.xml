@@ -2,30 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://hellolife.top/tags/index.html</loc>
+    <loc>http://hellolife.top/2018/08/01/erlang%E5%9F%BA%E7%A1%80/</loc>
     
-    <lastmod>2018-07-31T04:02:55.755Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://hellolife.top/categories/index.html</loc>
-    
-    <lastmod>2018-07-31T04:02:48.211Z</lastmod>
+    <lastmod>2018-08-01T07:50:40.983Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://hellolife.top/about/index.html</loc>
     
-    <lastmod>2018-07-31T04:02:40.339Z</lastmod>
+    <lastmod>2018-08-01T04:12:46.295Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://hellolife.top/2018/07/31/hello-world/</loc>
+    <loc>http://hellolife.top/tags/index.html</loc>
     
-    <lastmod>2018-07-30T02:45:00.432Z</lastmod>
+    <lastmod>2018-08-01T03:31:41.463Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://hellolife.top/categories/index.html</loc>
+    
+    <lastmod>2018-08-01T02:17:35.414Z</lastmod>
     
   </url>
   
