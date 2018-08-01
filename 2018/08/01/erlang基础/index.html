@@ -158,7 +158,7 @@
 <meta property="og:site_name" content="yuangy&#39;s blog">
 <meta property="og:description" content="Erlang基础&amp;emsp;&amp;emsp;erlang:函数式编程，消息传递，容错，高并发。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-01T07:56:30.472Z">
+<meta property="og:updated_time" content="2018-08-01T07:58:54.151Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Erlang基础">
 <meta name="twitter:description" content="Erlang基础&amp;emsp;&amp;emsp;erlang:函数式编程，消息传递，容错，高并发。">
@@ -455,7 +455,7 @@
 <h3 id="语句和注释"><a href="#语句和注释" class="headerlink" title="语句和注释"></a>语句和注释</h3><ol>
 <li>“ . ”作为一条语句结束（参考英语句子）</li>
 <li>“ ; ”连接的语句表示“或”，“ , ”连接的语句表示“且” (参考when关卡)</li>
-<li>“%”来做行注释<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1&gt; F = fun(A,B) when is_number(A),is_number(B) -&gt; A+B end. </span><br><span class="line">#Fun&lt;erl_eval.12.52032458&gt;</span><br><span class="line">2&gt; F(3,4).  </span><br><span class="line">7</span><br><span class="line">3&gt;</span><br></pre></td></tr></table></figure>
+<li>“%”来做行注释<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1&gt; F = fun(A,B) when is_number(A),is_number(B) -&gt; A+B end. </span><br><span class="line"><span class="comment">#Fun&lt;erl_eval.12.52032458&gt;</span></span><br><span class="line">2&gt; F(3,4).  </span><br><span class="line">7</span><br><span class="line">3&gt;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <hr>
@@ -466,7 +466,7 @@
 <li><strong>元组：</strong>大括号包起来，里面用逗号隔开的一种erlang数据类型，通常元组第一位用一个语义化的原子值占位。</li>
 <li><strong>列表：</strong>被用来存放任意数据类型任意数量的数据类型，类似js中的数组。</li>
 <li><strong>字符串：</strong>双引号包起来，严格来说，erlang中没有字符串，其本质就是列表。所以一般如果你想用真·字符串的时候，用Erlang的Binary类型，这样表示：&lt;&lt;”abc”&gt;&gt;。</li>
-<li><strong>二进制型与位串：</strong>在二进制里使用整数时，必须属于0~255这个范围。二进制型&lt;&lt;”cat”&gt;&gt;是&lt;&lt;99,97,116&gt;&gt;的简写形式，也就是说，这个二进制型是由字符串里这些字符的ASCII编码组成的。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">1&gt; 1. %% 整数</span><br><span class="line">1</span><br><span class="line">2&gt; 1.2 . %% 浮点数</span><br><span class="line">1.2</span><br><span class="line">3&gt; a. %% 原子</span><br><span class="line">a</span><br><span class="line">4&gt; &#123;point,1,2&#125;. %% 元组</span><br><span class="line">&#123;point,1,2&#125;</span><br><span class="line">5&gt; [1,2,3]. %% 列表</span><br><span class="line">[1,2,3]</span><br><span class="line">6&gt; &quot;1,2,3&quot;. %% 字符串</span><br><span class="line">&quot;1,2,3&quot;</span><br><span class="line">7&gt; &lt;&lt;&quot;cat&quot;&gt;&gt;. %% 二进制与位串</span><br><span class="line">&lt;&lt;&quot;cat&quot;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<li><strong>二进制型与位串：</strong>在二进制里使用整数时，必须属于0~255这个范围。二进制型&lt;&lt;”cat”&gt;&gt;是&lt;&lt;99,97,116&gt;&gt;的简写形式，也就是说，这个二进制型是由字符串里这些字符的ASCII编码组成的。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">1&gt; 1. %% 整数</span><br><span class="line">1</span><br><span class="line">2&gt; 1.2 . %% 浮点数</span><br><span class="line">1.2</span><br><span class="line">3&gt; a. %% 原子</span><br><span class="line">a</span><br><span class="line">4&gt; &#123;point,1,2&#125;. %% 元组</span><br><span class="line">&#123;point,1,2&#125;</span><br><span class="line">5&gt; [1,2,3]. %% 列表</span><br><span class="line">[1,2,3]</span><br><span class="line">6&gt; <span class="string">"1,2,3"</span>. %% 字符串</span><br><span class="line"><span class="string">"1,2,3"</span></span><br><span class="line">7&gt; &lt;&lt;<span class="string">"cat"</span>&gt;&gt;. %% 二进制与位串</span><br><span class="line">&lt;&lt;<span class="string">"cat"</span>&gt;&gt;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <hr>
