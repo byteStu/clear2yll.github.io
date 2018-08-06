@@ -150,18 +150,18 @@
 
 
 
-<meta name="description" content="创建进程 两种创建进程方式，Pid：进程标识符，self()：当前进程Pid12Pid = spawn(Mod,Func,Args) %% MFA,支持动态代码升级Pid = spawn(Fun) %% Fun   发消息1Pid ! Message 收消息 进程中的几个概念：定时器，邮箱队列，保存队列 定时器：如果receive体包含arter超时部分，那么进入receiv会启动一个定时器。 邮">
+<meta name="description" content="创建进程 两种创建进程方式，Pid：进程标识符，self()：当前进程Pid12Pid = spawn(Mod,Func,Args) %% MFA,支持动态代码升级Pid = spawn(Fun) %% Fun   发消息1Pid ! Message">
 <meta name="keywords" content="Erlang,并发编程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Erlang并发编程（一）">
 <meta property="og:url" content="http://hellolife.top/e06690c7.html">
 <meta property="og:site_name" content="突然冷风吹">
-<meta property="og:description" content="创建进程 两种创建进程方式，Pid：进程标识符，self()：当前进程Pid12Pid = spawn(Mod,Func,Args) %% MFA,支持动态代码升级Pid = spawn(Fun) %% Fun   发消息1Pid ! Message 收消息 进程中的几个概念：定时器，邮箱队列，保存队列 定时器：如果receive体包含arter超时部分，那么进入receiv会启动一个定时器。 邮">
+<meta property="og:description" content="创建进程 两种创建进程方式，Pid：进程标识符，self()：当前进程Pid12Pid = spawn(Mod,Func,Args) %% MFA,支持动态代码升级Pid = spawn(Fun) %% Fun   发消息1Pid ! Message">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-06T10:06:52.444Z">
+<meta property="og:updated_time" content="2018-08-06T10:07:57.205Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Erlang并发编程（一）">
-<meta name="twitter:description" content="创建进程 两种创建进程方式，Pid：进程标识符，self()：当前进程Pid12Pid = spawn(Mod,Func,Args) %% MFA,支持动态代码升级Pid = spawn(Fun) %% Fun   发消息1Pid ! Message 收消息 进程中的几个概念：定时器，邮箱队列，保存队列 定时器：如果receive体包含arter超时部分，那么进入receiv会启动一个定时器。 邮">
+<meta name="twitter:description" content="创建进程 两种创建进程方式，Pid：进程标识符，self()：当前进程Pid12Pid = spawn(Mod,Func,Args) %% MFA,支持动态代码升级Pid = spawn(Fun) %% Fun   发消息1Pid ! Message">
 
 
 
@@ -454,6 +454,7 @@
 </li>
 </ul>
 <h2 id="发消息"><a href="#发消息" class="headerlink" title="发消息"></a>发消息</h2><figure class="highlight erl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Pid ! Message</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <h2 id="收消息"><a href="#收消息" class="headerlink" title="收消息"></a>收消息</h2><ul>
 <li>进程中的几个概念：<strong>定时器，邮箱队列，保存队列</strong><ol>
 <li><strong>定时器</strong>：如果receive体包含arter超时部分，那么进入receiv会启动一个定时器。</li>

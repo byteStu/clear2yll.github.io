@@ -150,18 +150,18 @@
 
 
 
-<meta name="description" content="Erlang进程中的一些概念 进程 普通进程：spawn创建的进程是普通进程。 系统进程：普通进程可执行process_flag(trap_exit,true)变成系统进程。   进程可以相互连接。如果进程A和B两个进程有连接，而A出于某种原因终止了，就会向B发送一个错误信号，反之亦然。当A或B收到连接进程发送的错误信号时，随之自己也会挂掉，同时发送错误信号给与他连接的其他进程，即会产生“连锁反应">
+<meta name="description" content="Erlang进程中的一些概念">
 <meta name="keywords" content="Erlang,并发编程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Erlang并发编程（二）">
 <meta property="og:url" content="http://hellolife.top/d0707c1f.html">
 <meta property="og:site_name" content="突然冷风吹">
-<meta property="og:description" content="Erlang进程中的一些概念 进程 普通进程：spawn创建的进程是普通进程。 系统进程：普通进程可执行process_flag(trap_exit,true)变成系统进程。   进程可以相互连接。如果进程A和B两个进程有连接，而A出于某种原因终止了，就会向B发送一个错误信号，反之亦然。当A或B收到连接进程发送的错误信号时，随之自己也会挂掉，同时发送错误信号给与他连接的其他进程，即会产生“连锁反应">
+<meta property="og:description" content="Erlang进程中的一些概念">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-06T10:06:43.252Z">
+<meta property="og:updated_time" content="2018-08-06T10:08:14.276Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Erlang并发编程（二）">
-<meta name="twitter:description" content="Erlang进程中的一些概念 进程 普通进程：spawn创建的进程是普通进程。 系统进程：普通进程可执行process_flag(trap_exit,true)变成系统进程。   进程可以相互连接。如果进程A和B两个进程有连接，而A出于某种原因终止了，就会向B发送一个错误信号，反之亦然。当A或B收到连接进程发送的错误信号时，随之自己也会挂掉，同时发送错误信号给与他连接的其他进程，即会产生“连锁反应">
+<meta name="twitter:description" content="Erlang进程中的一些概念">
 
 
 
@@ -449,7 +449,8 @@
       
 
       
-        <h2 id="Erlang进程中的一些概念"><a href="#Erlang进程中的一些概念" class="headerlink" title="Erlang进程中的一些概念"></a>Erlang进程中的一些概念</h2><ol>
+        <h2 id="Erlang进程中的一些概念"><a href="#Erlang进程中的一些概念" class="headerlink" title="Erlang进程中的一些概念"></a>Erlang进程中的一些概念</h2><a id="more"></a>
+<ol>
 <li>进程<ol>
 <li>普通进程：spawn创建的进程是普通进程。</li>
 <li>系统进程：普通进程可执行<code>process_flag(trap_exit,true)</code>变成系统进程。</li>
