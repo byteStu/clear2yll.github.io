@@ -137,7 +137,7 @@
 
 
 
-  <meta name="keywords" content="Erlang,ETS," />
+  <meta name="keywords" content="Erlang,Gen_server,OTP," />
 
 
 
@@ -150,18 +150,18 @@
 
 
 
-<meta name="description" content="ETS(Erlang Term Storage)Erlang数据存储（内存级别） ETS有四种表类型：异键(Set)、有序异键(ordered_set)、同键(bag)、副本同键(duplicate_bag)  Set：键唯一 ordered_set：键唯一，元组会被排序 bag：多个元组可拥有相同的键，但不能有两个完全相同的元组（同键不同组） duplicate_bag：多个元组可拥有相同的键，">
-<meta name="keywords" content="Erlang,ETS">
+<meta name="description" content="1, start_link12start_link() -&amp;gt;    gen_server:start_link(&amp;#123;local, ch3&amp;#125;, ch3, [], []) =&amp;gt; &amp;#123;ok, Pid&amp;#125; 调用gen_server:start_link/4，创建并且注册一个新进程  第一个参数：local表示在本地注册，用模块名ch3作为进程注册的名称 第二个">
+<meta name="keywords" content="Erlang,Gen_server,OTP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Erlang-ETS存储数据">
-<meta property="og:url" content="http://hellolife.top/9e399184.html">
+<meta property="og:title" content="Erlang-gen_server">
+<meta property="og:url" content="http://hellolife.top/1593793e.html">
 <meta property="og:site_name" content="突然冷风吹">
-<meta property="og:description" content="ETS(Erlang Term Storage)Erlang数据存储（内存级别） ETS有四种表类型：异键(Set)、有序异键(ordered_set)、同键(bag)、副本同键(duplicate_bag)  Set：键唯一 ordered_set：键唯一，元组会被排序 bag：多个元组可拥有相同的键，但不能有两个完全相同的元组（同键不同组） duplicate_bag：多个元组可拥有相同的键，">
+<meta property="og:description" content="1, start_link12start_link() -&amp;gt;    gen_server:start_link(&amp;#123;local, ch3&amp;#125;, ch3, [], []) =&amp;gt; &amp;#123;ok, Pid&amp;#125; 调用gen_server:start_link/4，创建并且注册一个新进程  第一个参数：local表示在本地注册，用模块名ch3作为进程注册的名称 第二个">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-06T09:38:42.500Z">
+<meta property="og:updated_time" content="2018-08-06T09:50:13.006Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Erlang-ETS存储数据">
-<meta name="twitter:description" content="ETS(Erlang Term Storage)Erlang数据存储（内存级别） ETS有四种表类型：异键(Set)、有序异键(ordered_set)、同键(bag)、副本同键(duplicate_bag)  Set：键唯一 ordered_set：键唯一，元组会被排序 bag：多个元组可拥有相同的键，但不能有两个完全相同的元组（同键不同组） duplicate_bag：多个元组可拥有相同的键，">
+<meta name="twitter:title" content="Erlang-gen_server">
+<meta name="twitter:description" content="1, start_link12start_link() -&amp;gt;    gen_server:start_link(&amp;#123;local, ch3&amp;#125;, ch3, [], []) =&amp;gt; &amp;#123;ok, Pid&amp;#125; 调用gen_server:start_link/4，创建并且注册一个新进程  第一个参数：local表示在本地注册，用模块名ch3作为进程注册的名称 第二个">
 
 
 
@@ -191,13 +191,13 @@
 
 
 
-  <link rel="canonical" href="http://hellolife.top/9e399184.html"/>
+  <link rel="canonical" href="http://hellolife.top/1593793e.html"/>
 
 
 
 
 
-  <title>Erlang-ETS存储数据 | 突然冷风吹</title>
+  <title>Erlang-gen_server | 突然冷风吹</title>
   
 
 
@@ -324,7 +324,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://hellolife.top/9e399184.html">
+    <link itemprop="mainEntityOfPage" href="http://hellolife.top/1593793e.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="yuangy">
@@ -341,7 +341,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Erlang-ETS存储数据</h1>
+          <h1 class="post-title" itemprop="name headline">Erlang-gen_server</h1>
         
 
         <div class="post-meta">
@@ -353,7 +353,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-06T17:08:08+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-06T17:47:52+08:00">
                 2018-08-06
               </time>
             
@@ -412,7 +412,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,136
+                  803
                 </span>
               
 
@@ -428,7 +428,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5
+                  3
                 </span>
               
             </div>
@@ -449,55 +449,40 @@
       
 
       
-        <h2 id="ETS-Erlang-Term-Storage-Erlang数据存储（内存级别）"><a href="#ETS-Erlang-Term-Storage-Erlang数据存储（内存级别）" class="headerlink" title="ETS(Erlang Term Storage)Erlang数据存储（内存级别）"></a>ETS(Erlang Term Storage)Erlang数据存储（内存级别）</h2><p> <strong>ETS</strong>有四种表类型：异键(Set)、有序异键(ordered_set)、同键(bag)、副本同键(duplicate_bag)</p>
+        <h3 id="1-start-link"><a href="#1-start-link" class="headerlink" title="1, start_link"></a>1, start_link</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">start_link() -&gt;</span><br><span class="line">    gen_server:start_link(&#123;local, ch3&#125;, ch3, [], []) =&gt; &#123;ok, Pid&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>调用</strong>gen_server:start_link/4，创建并且注册一个新进程</p>
 <ul>
-<li>Set：键唯一</li>
-<li>ordered_set：键唯一，元组会被排序</li>
-<li>bag：多个元组可拥有相同的键，但不能有两个完全相同的元组（同键不同组）</li>
-<li>duplicate_bag：多个元组可拥有相同的键，且可以有多个相同的元组（同键亦同组）</li>
+<li>第一个参数：local表示在本地注册，用模块名ch3作为进程注册的名称</li>
+<li>第二个参数：回调模块的名字，因为gen_server的接口函数和回调函数是在同一个模块里面，所以   这里也为ch3</li>
+<li>第三个参数：[]这个为gen_server:start_link内部调用init（回调函数）时，给init传递的参数</li>
+<li>第四个参数：[]是参数的列表<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Options ::= [&#123;timeout, Timeout&#125; | &#123;debug, [Flag]&#125;]</span><br><span class="line">%%%      Flag ::= trace | log | &#123;logfile, File&#125; | statistics | debug</span><br><span class="line">%%%     (debug == log &amp;&amp; statistics)</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 <a id="more"></a>
 <hr>
-<h3 id="一，创建表"><a href="#一，创建表" class="headerlink" title="一，创建表"></a>一，创建表</h3><figure class="highlight erl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ets:new(Name,Options)   <span class="comment">%% 返回一个表标识符，唯一标识该表</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-同步调用–call"><a href="#2-同步调用–call" class="headerlink" title="2, 同步调用–call"></a>2, 同步调用–call</h3>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">do_some() -&gt;</span><br><span class="line">  gen_server:call(ch3, alloc).</span><br></pre></td></tr></table></figure>
 <ul>
-<li>参数</li>
+<li>第一个参数：ch3是注册的gen_server进程名字</li>
+<li>第二个参数：是具体传递的参数，为term()，即erlang数据类型</li>
+<li>第三个参数：超时时间int</li>
 </ul>
-<ol>
-<li>Name：表名</li>
-<li>Options：参数列表<br>当Options为[]时，默认参数相当于<code>[set, protected, {keypos,1}, {heir,none}, {write_concurrency,false}, {read_concurrency,false}]</code><br><br><strong>第一个选项</strong>：==set== | ==ordered_set== | ==bag== | ==duplicate_bag==<br><br><strong>第二个选项</strong>：private（唯有主管进程可读写），public（任何进程都可读写），protected（主管进程可读写，其他进程可读）<br><br><strong>named_table</strong>：如果设置此项，Name就可以被用于后续操作，相当于表标识符<br><br><strong>{keypos,K}</strong>：用K作为键的位置</li>
-</ol>
-<figure class="highlight erl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">new</span><span class="params">(Name, Options)</span> -&gt;</span> tid() | atom()</span><br><span class="line">   Types:</span><br><span class="line">   Name = atom()</span><br><span class="line">   Options = [Option]</span><br><span class="line">   Option = </span><br><span class="line">       Type |</span><br><span class="line">       Access |</span><br><span class="line">       named_table |</span><br><span class="line">       &#123;keypos, Pos&#125; |</span><br><span class="line">       &#123;heir, Pid :: pid(), HeirData&#125; |</span><br><span class="line">       &#123;heir, none&#125; |</span><br><span class="line">       Tweaks</span><br><span class="line">   Type = type()</span><br><span class="line">   Access = access()</span><br><span class="line">   Tweaks = </span><br><span class="line">       &#123;write_concurrency, boolean()&#125; |</span><br><span class="line">       &#123;read_concurrency, boolean()&#125; |</span><br><span class="line">       compressed</span><br><span class="line">   Pos = integer() &gt;= <span class="number">1</span></span><br><span class="line">   HeirData = term()</span><br></pre></td></tr></table></figure>
-<h3 id="二，删除表"><a href="#二，删除表" class="headerlink" title="二，删除表"></a>二，删除表</h3><figure class="highlight erl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ets:delete(TableId)</span><br><span class="line">ets:delete(TableId,Key)</span><br></pre></td></tr></table></figure>
-<h3 id="三，插入表"><a href="#三，插入表" class="headerlink" title="三，插入表"></a>三，插入表</h3><figure class="highlight erl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ets:insert(Tab,objectOrObjects)</span><br></pre></td></tr></table></figure>
-<h3 id="四，查询表"><a href="#四，查询表" class="headerlink" title="四，查询表"></a>四，查询表</h3><figure class="highlight erl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ets:lookup(Tab,Key) <span class="comment">%%根据键查询</span></span><br><span class="line">ets:i(Tab) <span class="comment">%% 展示，没错，仅仅是展示所有记录</span></span><br></pre></td></tr></table></figure>
-<h4 id="match，match-object的查询"><a href="#match，match-object的查询" class="headerlink" title="match，match_object的查询"></a>match，match_object的查询</h4><ol>
-<li>关于match/3和match/1<a href="https://erldoc.com/mod/ets/match_1.html?search=ets:&amp;i=20" target="_blank" rel="noopener">点击了解更多match/1和match/3信息</a><br><br><strong>ets:match(Tab,Pattern,Limit)</strong>：Pattern通常为<code>&#39;$数字&#39;这样的原子类型，表示占位符（当有两个相同占位符时，表示这两个位置上的元素要相同）即要显示的结果 ，或{&#39;_&#39;,dog,&#39;$1&#39;}这样的元组，&#39;_&#39;表示通配符。Limit表示拿出几条记录，int型</code>。</li>
-</ol>
-<figure class="highlight erl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>&gt; Tab = ets:new(ets_tab, [named_table, bag]),ets:insert(Tab, [&#123;apple, <span class="number">1</span>&#125;, &#123;pear, <span class="number">2</span>&#125;, &#123;orange, <span class="number">3</span>&#125;, &#123;grape, <span class="number">4</span>&#125;, &#123;watermelon, <span class="number">5</span>&#125;,&#123;apple,<span class="number">6</span>&#125;]). <span class="comment">%% 创建表，并向表里插入数据</span></span><br><span class="line"><span class="literal">true</span></span><br><span class="line"><span class="number">2</span>&gt; &#123;M1, C1&#125; = ets:match(ets_tab, &#123;apple,'$<span class="number">1</span>'&#125;, <span class="number">2</span>). <span class="comment">%%匹配表里第一个元素为apple，</span></span><br><span class="line">                                                  <span class="comment">%%第二个占位表示将表里每条记录的第二个元素存到M1里面，以如下形式</span></span><br><span class="line">                                                  <span class="comment">%% '$end_of_table'表示以这种匹配条件，没有更多的数据在表里</span></span><br><span class="line">&#123;[[<span class="number">1</span>],[<span class="number">6</span>]],'$end_of_table'&#125;                                 </span><br><span class="line"><span class="number">3</span>&gt; &#123;M2, C2&#125; = ets:match(ets_tab, &#123;'_','$<span class="number">1</span>'&#125;, <span class="number">2</span>). <span class="comment">%% 表示第一位通配，第二位占位  </span></span><br><span class="line">&#123;[[<span class="number">3</span>],[<span class="number">2</span>]],&#123;ets_tab,<span class="number">22</span>,<span class="number">2</span>,&lt;&lt;&gt;&gt;,[],<span class="number">0</span>&#125;&#125;</span><br><span class="line"><span class="number">4</span>&gt; &#123;M3, C3&#125; = ets:match(C2). <span class="comment">%% 调用 match/1 继续匹配C2                    </span></span><br><span class="line">&#123;[[<span class="number">1</span>],[<span class="number">6</span>]],&#123;ets_tab,<span class="number">101</span>,<span class="number">2</span>,&lt;&lt;&gt;&gt;,[],<span class="number">0</span>&#125;&#125;</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>类似的还有ets:match_object/3和ets:match_object/1。</li>
-<li>关于ets:match/2和ets:match_object/2，参数都为Tab和Pattern<br><br><strong>个人理解</strong>：match系列方法中，当做了“筛选条件”的位置的元素，便不会输出。因此，当需要获得符合条件的记录的全部元素时，建议使用其他方法，比如<strong>match_object</strong>。</li>
-<li><strong>match与match_object的区别</strong>：match_object会返回符合匹配条件的记录的所有元素，因此占位符<code>&#39;$数字&#39;</code>与<code>&#39;_&#39;</code>区别不大，另外match里匹配到的记录都为列表，match_object匹配到的每条记录都是元组。</li>
-</ol>
-<h4 id="select-的查询"><a href="#select-的查询" class="headerlink" title="select 的查询"></a>select 的查询</h4><figure class="highlight erl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>&gt; Tab = ets:new(ets_tab, [named_table, bag]),ets:insert(Tab, [&#123;apple, <span class="number">1</span>&#125;, &#123;pear, <span class="number">2</span>&#125;, &#123;orange, <span class="number">3</span>&#125;, &#123;grape, <span class="number">4</span>&#125;, &#123;watermelon, <span class="number">5</span>&#125;,&#123;apple,<span class="number">6</span>&#125;]).</span><br><span class="line"><span class="literal">true</span></span><br><span class="line"><span class="number">2</span>&gt; ets:select(ets_tab,[&#123;&#123;'$<span class="number">1</span>','$<span class="number">2</span>'&#125;,[&#123;'=:=','$<span class="number">1</span>',apple&#125;,&#123;'&lt;','$<span class="number">2</span>',<span class="number">6</span>&#125;],['$$']&#125;]).                          </span><br><span class="line">[[apple,<span class="number">1</span>]]</span><br></pre></td></tr></table></figure>
-<ol>
-<li>select/2第一个参数为Tab，第二个参数是一个列表或者是ets:fun2ms/1的返回值（其实该返回值也是列表），列表里面是一个固定格式的三个元素的元组。这个固定格式的三元组为</li>
-</ol>
-<figure class="highlight erl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;第一个元素是一个元组，每个占位符对应记录的每一个元素&#125;，[第二个元素是一个关卡列表，里面包含多个用三元组描述的关卡表达式]，[第三个元素是实际返回值得描述列表]&#125;</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>第二个参数关卡示例：</li>
-</ol>
-<figure class="highlight erl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[&#123;is_integer, '$<span class="number">1</span>'&#125;, &#123;is_integer, '$<span class="number">2</span>'&#125;, &#123;'&lt;', &#123;'+', '$<span class="number">1</span>', '$<span class="number">2</span>'&#125;, <span class="number">4711</span>&#125;]</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>第三个参数返回列表描述示例：</li>
-</ol>
-<figure class="highlight erl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">['$$']和['$_']表示返回所有元素</span><br><span class="line">['$<span class="number">1</span>']表示仅返回'$<span class="number">1</span>'占位的元素</span><br><span class="line">['$<span class="number">1</span>','$<span class="number">2</span>']表示返回'$<span class="number">2</span>'占位的元素,伪函数表示为：ets:fun2ms(<span class="keyword">fun</span>(&#123;M, N&#125;) <span class="keyword">when</span> N &gt; <span class="number">3</span> -&gt; N,M <span class="keyword">end</span>). 所以只会返回后面的一个</span><br></pre></td></tr></table></figure>
-<ol start="4">
-<li>ets:fun2ms/1作用是把语法函数转换为匹配规范的伪函数，使用前要引入<code>-include_lib(&quot;stdlib/include/ms_transform.hrl&quot;).</code>，因为匹配规范解析转换是在 ms_transform 模块里实现，具体细节请点击<a href="https://erldoc.com/mod/ets/fun2ms_1.html?search=ets:&amp;i=8" target="_blank" rel="noopener">ets:fun2ms/1的使用</a></li>
-<li>select/1和select/3参考ets:match系列函数</li>
-</ol>
+<p><strong>请求</strong>以消息的形式发给gen_server进程ch3，当gen_server进程收到消息后回调handle_call(Request, From, State),它应返回一个元组 {reply, Reply, State1}。Reply是需要回馈给客户端的答复，同时 State1 是gen_server的状态的新值。</p>
+<hr>
+<h3 id="3，异步请求——Cast"><a href="#3，异步请求——Cast" class="headerlink" title="3，异步请求——Cast"></a>3，异步请求——Cast</h3><p>异步请求 free(ch) 使用 gen_server:cast/2 实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">free(Ch) -&gt;</span><br><span class="line">    gen_server:cast(ch3, &#123;free, Chr&#125;).</span><br></pre></td></tr></table></figure></p>
+<p>ch3 是gen_server的名称。 {free, Ch} 是实际的请求。</p>
+<p>请求被装在一个消息中发给gen_server的 cast ，这调用了 free ，然后返回了 ok 。</p>
+<p>当gen_server收到请求之后，它会调用 handle_cast(Request, Stats) ，会返回一个元组 {noreply, State1} 。 State1 是gen_server状态的新值。</p>
+<p>handle_cast({free, Ch}, Chs) -&gt;<br>    Chs2 = free(Ch, Chs),<br>    {noreply, Chs2}.<br>在这里，新的状态便是更新过的可用频道列表 Chs2 。gen_server现在又可以接受新的请求了。</p>
+<hr>
+<h3 id="4-停止"><a href="#4-停止" class="headerlink" title="4, 停止"></a>4, 停止</h3><p>在==监督树中==<br>若gen_server是某个监督树的一部分，则无需停止函数。它的督程会自动终止它。它的具体做法由督程中设置的 关闭策略 定义。</p>
+<p>如果在终止之前需要进行一些清理工作，那么关闭策略必须是一个超时值，同时gen_server必须在 init 函数中设置为捕获退出信号。当gen_server被要求关闭时，它就会调用回调函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">terminate(shutdown, State) ：</span><br><span class="line"></span><br><span class="line">init(Args) -&gt;</span><br><span class="line">    ...,</span><br><span class="line">    process_flag(trap_exit, true),</span><br><span class="line">    ...,</span><br><span class="line">    &#123;ok, State&#125;.</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">terminate(shutdown, State) -&gt;</span><br><span class="line">    ..code for cleaning up here..</span><br><span class="line">    ok.</span><br></pre></td></tr></table></figure></p>
+<h3 id="5-独立Gen-Server"><a href="#5-独立Gen-Server" class="headerlink" title="5, 独立Gen_Server"></a>5, 独立Gen_Server</h3><p>如果gen_server并非某个监督树的一部分，那么可以用一个停止函数，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">export([stop/0]).</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">stop() -&gt;</span><br><span class="line">    gen_server:cast(ch3, stop).</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">handle_cast(stop, State) -&gt;</span><br><span class="line">    &#123;stop, normal, State&#125;;</span><br><span class="line">handle_cast(&#123;free, Ch&#125;, State) -&gt;</span><br><span class="line">    ....</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">terminate(normal, State) -&gt;</span><br><span class="line">    ok.</span><br></pre></td></tr></table></figure>
+<p>回调函数处理 stop 请求并返回一个元组 {stop, normal, State1} ，其中 normal 表示这是一个正常的终止， State1 是gen_server状态的新值。这会引发gen_server调用 terminate(normal, State1) 来优雅地终止。</p>
+<h3 id="6-处理其他消息"><a href="#6-处理其他消息" class="headerlink" title="6, 处理其他消息"></a>6, 处理其他消息</h3><p>如果要想gen_server还能处理请求之外的消息，必须实现回调函数 handle_info(Info, State) 来处理他们。例如，如果gen_server联结到其它进程（非督程）上并捕获退出信号，那么其它的消息就有退出消息。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">handle_info(&#123;&apos;EXIT&apos;, Pid, Reason&#125;, State) -&gt;</span><br><span class="line">    ..code to handle exits here..</span><br><span class="line">    &#123;noreply, State1&#125;.</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p><a href="https://erldoc.com/mod/ets/to_dets_2.html?search=ets:&amp;i=45" target="_blank" rel="noopener">ETS手册</a></p>
+<p>参考：<br><br><a href="https://cloud.tencent.com/developer/section/1122601" target="_blank" rel="noopener">[1] 腾讯云开发者手册</a><br><br><a href="http://www.cnerlang.com/lib/stdlib-3.1/doc/html/index.html" target="_blank" rel="noopener">[2] Erlang在线手册</a></p>
 </blockquote>
 
       
@@ -515,12 +500,12 @@
   <!-- JS库 sweetalert 可修改路径 -->
   <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <p><span>本文标题:</span><a href="/9e399184.html">Erlang-ETS存储数据</a></p>
+  <p><span>本文标题:</span><a href="/1593793e.html">Erlang-gen_server</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 yuangy 的个人博客">yuangy</a></p>
   <p><span>发布时间:</span>2018年08月06日 - 17:08</p>
   <p><span>最后更新:</span>2018年08月06日 - 17:08</p>
-  <p><span>原始链接:</span><a href="/9e399184.html" title="Erlang-ETS存储数据">http://hellolife.top/9e399184.html</a>
-    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://hellolife.top/9e399184.html"  aria-label="复制成功！"></i></span>
+  <p><span>原始链接:</span><a href="/1593793e.html" title="Erlang-gen_server">http://hellolife.top/1593793e.html</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://hellolife.top/1593793e.html"  aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i>转载请保留原文链接及作者。</p>  
 </div>
@@ -581,7 +566,9 @@
           
             <a href="/tags/Erlang/" rel="tag"><i class="fa fa-tag"></i>Erlang</a>
           
-            <a href="/tags/ETS/" rel="tag"><i class="fa fa-tag"></i>ETS</a>
+            <a href="/tags/Gen-server/" rel="tag"><i class="fa fa-tag"></i>Gen_server</a>
+          
+            <a href="/tags/OTP/" rel="tag"><i class="fa fa-tag"></i>OTP</a>
           
         </div>
       
@@ -594,8 +581,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/13754dc.html" rel="next" title="Mnesia数据库">
-                <i class="fa fa-chevron-left"></i> Mnesia数据库
+              <a href="/9e399184.html" rel="next" title="Erlang-ETS存储数据">
+                <i class="fa fa-chevron-left"></i> Erlang-ETS存储数据
               </a>
             
           </div>
@@ -603,10 +590,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/1593793e.html" rel="prev" title="Erlang-gen_server">
-                Erlang-gen_server <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -783,7 +766,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ETS-Erlang-Term-Storage-Erlang数据存储（内存级别）"><span class="nav-number">1.</span> <span class="nav-text">ETS(Erlang Term Storage)Erlang数据存储（内存级别）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一，创建表"><span class="nav-number">1.1.</span> <span class="nav-text">一，创建表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二，删除表"><span class="nav-number">1.2.</span> <span class="nav-text">二，删除表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三，插入表"><span class="nav-number">1.3.</span> <span class="nav-text">三，插入表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四，查询表"><span class="nav-number">1.4.</span> <span class="nav-text">四，查询表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#match，match-object的查询"><span class="nav-number">1.4.1.</span> <span class="nav-text">match，match_object的查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#select-的查询"><span class="nav-number">1.4.2.</span> <span class="nav-text">select 的查询</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-start-link"><span class="nav-number">1.</span> <span class="nav-text">1, start_link</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-同步调用–call"><span class="nav-number">2.</span> <span class="nav-text">2, 同步调用–call</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3，异步请求——Cast"><span class="nav-number">3.</span> <span class="nav-text">3，异步请求——Cast</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-停止"><span class="nav-number">4.</span> <span class="nav-text">4, 停止</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-独立Gen-Server"><span class="nav-number">5.</span> <span class="nav-text">5, 独立Gen_Server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-处理其他消息"><span class="nav-number">6.</span> <span class="nav-text">6, 处理其他消息</span></a></li></ol></div>
             
 
           </div>
