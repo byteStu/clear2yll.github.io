@@ -158,7 +158,7 @@
 <meta property="og:site_name" content="突然冷风吹">
 <meta property="og:description" content="Mnesia数据库（内存，磁盘）创建/删除 数据库 创建/删除一个本地数据库： 12mnesia:create_schema([node()]). mnesia:delete_schema([node()]).  启动erlang时指定一个特定的数据库 1$ erl -mnesia dir &apos;&quot;/home/Mnesia.company&quot;&apos; %% /home/Mnesia.company是将要保存这">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-06T08:29:42.916Z">
+<meta property="og:updated_time" content="2018-08-06T08:58:13.356Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mnesia数据库">
 <meta name="twitter:description" content="Mnesia数据库（内存，磁盘）创建/删除 数据库 创建/删除一个本地数据库： 12mnesia:create_schema([node()]). mnesia:delete_schema([node()]).  启动erlang时指定一个特定的数据库 1$ erl -mnesia dir &apos;&quot;/home/Mnesia.company&quot;&apos; %% /home/Mnesia.company是将要保存这">
@@ -412,7 +412,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,026
+                  1,027
                 </span>
               
 
@@ -463,7 +463,10 @@
 <li><strong>其中mnesia:wait_for_tables/2的作用</strong>：一些应用的某些表可能由于表数据很大，以至初始的适合需要一个初始等待的时间才能正常访问到该表的数据。mnesia:wait_for_tables/2 悬停等待一段时间，直到在 TabList 的所有表可以被访问，或超过等待的时间。<figure class="highlight erl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">start</span><span class="params">()</span> -&gt;</span>  mnesia:start(),mnesia:wait_for_tables([shop,cost],<span class="number">2000</span>).</span><br><span class="line"><span class="function"><span class="title">stop</span><span class="params">()</span> -&gt;</span>  mnesia:stop().</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h2><figure class="highlight erl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">%% create_table（Name，TabDef） - &gt; &#123;atomic，ok&#125; | &#123;aborted，Reason&#125;</span></span><br><span class="line">mnesia:create_table(table_name,[&#123;attributes,record_info(fields,shop)&#125;])</span><br><span class="line"><span class="comment">%% 下面这个是官方示例</span></span><br><span class="line">mnesia:create_table(mnesia_table_name, [&#123;ram_copies, [node()]&#125;, &#123;disc_only_copies, nodes()&#125;, &#123;storage_properties, [&#123;ets, [compressed]&#125;, &#123;dets, [&#123;auto_save, <span class="number">5000</span>&#125;]&#125; ]&#125;]).</span><br></pre></td></tr></table></figure>
+<h2 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h2><ul>
+<li>create_table/2<figure class="highlight erl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">%% create_table（Name，TabDef） - &gt; &#123;atomic，ok&#125; | &#123;aborted，Reason&#125;</span></span><br><span class="line">mnesia:create_table(table_name,[&#123;attributes,record_info(fields,shop)&#125;])</span><br><span class="line"><span class="comment">%% 下面这个是官方示例</span></span><br><span class="line">mnesia:create_table(mnesia_table_name, [&#123;ram_copies, [node()]&#125;, &#123;disc_only_copies, nodes()&#125;, &#123;storage_properties, [&#123;ets, [compressed]&#125;, &#123;dets, [&#123;auto_save, <span class="number">5000</span>&#125;]&#125; ]&#125;]).</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 <ul>
 <li>record_info(type,record_name)：读取记录信息。type可为<code>fields</code>和<code>size</code>，分别为字段信息和长度信息。<figure class="highlight erl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">-record</span><span class="params">(shop,&#123;item, quantity, cost&#125;)</span>.</span><br><span class="line"><span class="function"><span class="title">test_record_info</span><span class="params">()</span> -&gt;</span></span><br><span class="line">    [record_info(fields,shop),record_info(size,shop)].</span><br><span class="line">调用test_record_info()输出：</span><br><span class="line"> [[item,quantity,cost],<span class="number">4</span>] <span class="comment">%% 字段三个，长度为4</span></span><br></pre></td></tr></table></figure>
 </li>
