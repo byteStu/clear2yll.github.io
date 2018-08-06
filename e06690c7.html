@@ -137,7 +137,7 @@
 
 
 
-  <meta name="keywords" content="Erlang,Gen_server,OTP," />
+  <meta name="keywords" content="Erlang,并发编程," />
 
 
 
@@ -150,18 +150,18 @@
 
 
 
-<meta name="description" content="start_link12start_link() -&amp;gt;    gen_server:start_link(&amp;#123;local, ch3&amp;#125;, ch3, [], []) =&amp;gt; &amp;#123;ok, Pid&amp;#125; 调用gen_server:start_link/4，创建并且注册一个新进程  第一个参数：local表示在本地注册，用模块名ch3作为进程注册的名称 第二个参数：">
-<meta name="keywords" content="Erlang,Gen_server,OTP">
+<meta name="description" content="创建进程 两种创建进程方式，Pid：进程标识符，self()：当前进程Pid12Pid = spawn(Mod,Func,Args) %% MFA,支持动态代码升级Pid = spawn(Fun) %% Fun   发消息1Pid ! Message 收消息 进程中的几个概念：定时器，邮箱队列，保存队列 定时器：如果receive体包含arter超时部分，那么进入receiv会启动一个定时器。 邮">
+<meta name="keywords" content="Erlang,并发编程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Erlang-gen_server">
-<meta property="og:url" content="http://hellolife.top/1593793e.html">
+<meta property="og:title" content="Erlang并发编程（一）">
+<meta property="og:url" content="http://hellolife.top/e06690c7.html">
 <meta property="og:site_name" content="突然冷风吹">
-<meta property="og:description" content="start_link12start_link() -&amp;gt;    gen_server:start_link(&amp;#123;local, ch3&amp;#125;, ch3, [], []) =&amp;gt; &amp;#123;ok, Pid&amp;#125; 调用gen_server:start_link/4，创建并且注册一个新进程  第一个参数：local表示在本地注册，用模块名ch3作为进程注册的名称 第二个参数：">
+<meta property="og:description" content="创建进程 两种创建进程方式，Pid：进程标识符，self()：当前进程Pid12Pid = spawn(Mod,Func,Args) %% MFA,支持动态代码升级Pid = spawn(Fun) %% Fun   发消息1Pid ! Message 收消息 进程中的几个概念：定时器，邮箱队列，保存队列 定时器：如果receive体包含arter超时部分，那么进入receiv会启动一个定时器。 邮">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-06T09:57:07.564Z">
+<meta property="og:updated_time" content="2018-08-06T10:06:52.444Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Erlang-gen_server">
-<meta name="twitter:description" content="start_link12start_link() -&amp;gt;    gen_server:start_link(&amp;#123;local, ch3&amp;#125;, ch3, [], []) =&amp;gt; &amp;#123;ok, Pid&amp;#125; 调用gen_server:start_link/4，创建并且注册一个新进程  第一个参数：local表示在本地注册，用模块名ch3作为进程注册的名称 第二个参数：">
+<meta name="twitter:title" content="Erlang并发编程（一）">
+<meta name="twitter:description" content="创建进程 两种创建进程方式，Pid：进程标识符，self()：当前进程Pid12Pid = spawn(Mod,Func,Args) %% MFA,支持动态代码升级Pid = spawn(Fun) %% Fun   发消息1Pid ! Message 收消息 进程中的几个概念：定时器，邮箱队列，保存队列 定时器：如果receive体包含arter超时部分，那么进入receiv会启动一个定时器。 邮">
 
 
 
@@ -191,13 +191,13 @@
 
 
 
-  <link rel="canonical" href="http://hellolife.top/1593793e.html"/>
+  <link rel="canonical" href="http://hellolife.top/e06690c7.html"/>
 
 
 
 
 
-  <title>Erlang-gen_server | 突然冷风吹</title>
+  <title>Erlang并发编程（一） | 突然冷风吹</title>
   
 
 
@@ -324,7 +324,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://hellolife.top/1593793e.html">
+    <link itemprop="mainEntityOfPage" href="http://hellolife.top/e06690c7.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="yuangy">
@@ -341,7 +341,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Erlang-gen_server</h1>
+          <h1 class="post-title" itemprop="name headline">Erlang并发编程（一）</h1>
         
 
         <div class="post-meta">
@@ -353,7 +353,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-06T17:47:52+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-06T18:05:16+08:00">
                 2018-08-06
               </time>
             
@@ -412,7 +412,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  799
+                  499
                 </span>
               
 
@@ -428,7 +428,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  2
                 </span>
               
             </div>
@@ -449,41 +449,40 @@
       
 
       
-        <h3 id="start-link"><a href="#start-link" class="headerlink" title="start_link"></a>start_link</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">start_link() -&gt;</span><br><span class="line">    gen_server:start_link(&#123;local, ch3&#125;, ch3, [], []) =&gt; &#123;ok, Pid&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>调用</strong>gen_server:start_link/4，创建并且注册一个新进程</p>
-<ul>
-<li>第一个参数：local表示在本地注册，用模块名ch3作为进程注册的名称</li>
-<li>第二个参数：回调模块的名字，因为gen_server的接口函数和回调函数是在同一个模块里面，所以   这里也为ch3</li>
-<li>第三个参数：[]这个为gen_server:start_link内部调用init（回调函数）时，给init传递的参数</li>
-<li>第四个参数：[]是参数的列表<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Options ::= [&#123;timeout, Timeout&#125; | &#123;debug, [Flag]&#125;]</span><br><span class="line">%%%      Flag ::= trace | log | &#123;logfile, File&#125; | statistics | debug</span><br><span class="line">%%%     (debug == log &amp;&amp; statistics)</span><br></pre></td></tr></table></figure>
+        <h2 id="创建进程"><a href="#创建进程" class="headerlink" title="创建进程"></a>创建进程</h2><ul>
+<li>两种创建进程方式，Pid：进程标识符，self()：当前进程Pid<figure class="highlight erl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Pid = spawn(Mod,Func,Args) <span class="comment">%% MFA,支持动态代码升级</span></span><br><span class="line">Pid = spawn(Fun) <span class="comment">%% Fun</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<a id="more"></a>
-<hr>
-<h3 id="同步调用–call"><a href="#同步调用–call" class="headerlink" title="同步调用–call"></a>同步调用–call</h3>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">do_some() -&gt;</span><br><span class="line">  gen_server:call(ch3, alloc).</span><br></pre></td></tr></table></figure>
-<ul>
-<li>第一个参数：ch3是注册的gen_server进程名字</li>
-<li>第二个参数：是具体传递的参数，为term()，即erlang数据类型</li>
-<li>第三个参数：超时时间int</li>
+<h2 id="发消息"><a href="#发消息" class="headerlink" title="发消息"></a>发消息</h2><figure class="highlight erl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Pid ! Message</span><br></pre></td></tr></table></figure>
+<h2 id="收消息"><a href="#收消息" class="headerlink" title="收消息"></a>收消息</h2><ul>
+<li>进程中的几个概念：<strong>定时器，邮箱队列，保存队列</strong><ol>
+<li><strong>定时器</strong>：如果receive体包含arter超时部分，那么进入receiv会启动一个定时器。</li>
+<li><strong>邮箱队列</strong>：每个进程都有一个邮箱队列，接收到的消息首先会存放在邮箱队列中，提供给receive进行匹配。</li>
+<li><strong>保存队列</strong>：保存邮箱队列中没有匹配上的消息。</li>
+</ol>
+</li>
+<li>receive的工作方式：<ol>
+<li>进入receive时，启动定时器</li>
+<li>逐个取出邮箱队列中的消息与receive中的Pattern逐个进行匹配，匹配上直接移除该条消息，匹配不上，放进保存队列</li>
+<li>如果邮箱队列里的消息都不匹配，进程就会被挂起并重新调度，直到新消息进入邮箱才会继续执行。<strong>注意：保存队列的消息不会重新匹配。</strong></li>
+<li>没有定时器时，匹配成功，保存队列里的消息会按照到达进程的顺序重新进入邮箱，如果有定时器，就会清楚保存队列里的消息</li>
+<li>定时器到期，系统会将保存队列里的消息重新放回邮箱队列。</li>
+</ol>
+</li>
 </ul>
-<p><strong>请求</strong>以消息的形式发给gen_server进程ch3，当gen_server进程收到消息后回调handle_call(Request, From, State),它应返回一个元组 {reply, Reply, State1}。Reply是需要回馈给客户端的答复，同时 State1 是gen_server的状态的新值。</p>
 <hr>
-<h3 id="异步请求——Cast"><a href="#异步请求——Cast" class="headerlink" title="异步请求——Cast"></a>异步请求——Cast</h3><p>异步请求 free(ch) 使用 gen_server:cast/2 实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">free(Ch) -&gt;</span><br><span class="line">    gen_server:cast(ch3, &#123;free, Chr&#125;).</span><br></pre></td></tr></table></figure></p>
-<p>ch3 是gen_server的名称。 {free, Ch} 是实际的请求。</p>
-<p>请求被装在一个消息中发给gen_server的 cast ，这调用了 free ，然后返回了 ok 。</p>
-<p>当gen_server收到请求之后，它会调用 handle_cast(Request, Stats) ，会返回一个元组 {noreply, State1} 。 State1 是gen_server状态的新值。</p>
-<p>handle_cast({free, Ch}, Chs) -&gt;<br>    Chs2 = free(Ch, Chs),<br>    {noreply, Chs2}.<br>在这里，新的状态便是更新过的可用频道列表 Chs2 。gen_server现在又可以接受新的请求了。</p>
-<hr>
-<h3 id="停止"><a href="#停止" class="headerlink" title="停止"></a>停止</h3><p>在==监督树中==<br>若gen_server是某个监督树的一部分，则无需停止函数。它的督程会自动终止它。它的具体做法由督程中设置的 关闭策略 定义。</p>
-<p>如果在终止之前需要进行一些清理工作，那么关闭策略必须是一个超时值，同时gen_server必须在 init 函数中设置为捕获退出信号。当gen_server被要求关闭时，它就会调用回调函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">terminate(shutdown, State) ：</span><br><span class="line"></span><br><span class="line">init(Args) -&gt;</span><br><span class="line">    ...,</span><br><span class="line">    process_flag(trap_exit, true),</span><br><span class="line">    ...,</span><br><span class="line">    &#123;ok, State&#125;.</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">terminate(shutdown, State) -&gt;</span><br><span class="line">    ..code for cleaning up here..</span><br><span class="line">    ok.</span><br></pre></td></tr></table></figure></p>
-<h3 id="独立Gen-Server"><a href="#独立Gen-Server" class="headerlink" title="独立Gen_Server"></a>独立Gen_Server</h3><p>如果gen_server并非某个监督树的一部分，那么可以用一个停止函数，例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">export([stop/0]).</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">stop() -&gt;</span><br><span class="line">    gen_server:cast(ch3, stop).</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">handle_cast(stop, State) -&gt;</span><br><span class="line">    &#123;stop, normal, State&#125;;</span><br><span class="line">handle_cast(&#123;free, Ch&#125;, State) -&gt;</span><br><span class="line">    ....</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">terminate(normal, State) -&gt;</span><br><span class="line">    ok.</span><br></pre></td></tr></table></figure>
-<p>回调函数处理 stop 请求并返回一个元组 {stop, normal, State1} ，其中 normal 表示这是一个正常的终止， State1 是gen_server状态的新值。这会引发gen_server调用 terminate(normal, State1) 来优雅地终止。</p>
-<h3 id="处理其他消息"><a href="#处理其他消息" class="headerlink" title="处理其他消息"></a>处理其他消息</h3><p>如果要想gen_server还能处理请求之外的消息，必须实现回调函数 handle_info(Info, State) 来处理他们。例如，如果gen_server联结到其它进程（非督程）上并捕获退出信号，那么其它的消息就有退出消息。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">handle_info(&#123;&apos;EXIT&apos;, Pid, Reason&#125;, State) -&gt;</span><br><span class="line">    ..code to handle exits here..</span><br><span class="line">    &#123;noreply, State1&#125;.</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>参考链接：<br><a href="https://cloud.tencent.com/developer/section/1122601" target="_blank" rel="noopener">[1] 腾讯云开发者手册</a><br><a href="http://www.cnerlang.com/lib/stdlib-3.1/doc/html/index.html" target="_blank" rel="noopener">[2] Erlang在线手册</a></p>
-</blockquote>
+<ul>
+<li><p>基本的接收消息方式</p>
+<figure class="highlight erl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">receive</span></span><br><span class="line">    Pattern1 [关卡] -&gt; </span><br><span class="line">        do...;</span><br><span class="line">    Pattern2 [关卡] -&gt;</span><br><span class="line">        do...;</span><br><span class="line">    ...</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>带超时的接收<br>如果超时为0，系统会在进入after之前对邮箱队列里的消息进行匹配，然后执行超时后的处理。</p>
+<figure class="highlight erl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">receive</span></span><br><span class="line">    Pattern1 [关卡] -&gt; </span><br><span class="line">        do...;</span><br><span class="line">    Pattern2 [关卡] -&gt;</span><br><span class="line">        do...;</span><br><span class="line">    ...</span><br><span class="line"><span class="keyword">after</span> Time -&gt;</span><br><span class="line">    do...</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>只带超时的接收</p>
+<figure class="highlight erl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">receive</span></span><br><span class="line"><span class="keyword">after</span> Time -&gt;</span><br><span class="line">    <span class="literal">true</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="注册进程"><a href="#注册进程" class="headerlink" title="注册进程"></a>注册进程</h2><figure class="highlight erl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">register</span><span class="params">(Atom_Process_Name,Pid)</span></span></span><br><span class="line"><span class="function"><span class="title">unregister</span><span class="params">(Atom_Process_Name)</span></span></span><br><span class="line"><span class="function"><span class="title">whereis</span><span class="params">(Atom_Process_Name)</span> -&gt;</span> Pid | undefined <span class="comment">%% 检查Atom_Process_Name是否已被注册</span></span><br><span class="line">registed() [Atom_Process_Name::atom()] <span class="comment">%% 返回注册列表</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -500,12 +499,12 @@
   <!-- JS库 sweetalert 可修改路径 -->
   <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <p><span>本文标题:</span><a href="/1593793e.html">Erlang-gen_server</a></p>
+  <p><span>本文标题:</span><a href="/e06690c7.html">Erlang并发编程（一）</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 yuangy 的个人博客">yuangy</a></p>
-  <p><span>发布时间:</span>2018年08月06日 - 17:08</p>
-  <p><span>最后更新:</span>2018年08月06日 - 17:08</p>
-  <p><span>原始链接:</span><a href="/1593793e.html" title="Erlang-gen_server">http://hellolife.top/1593793e.html</a>
-    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://hellolife.top/1593793e.html"  aria-label="复制成功！"></i></span>
+  <p><span>发布时间:</span>2018年08月06日 - 18:08</p>
+  <p><span>最后更新:</span>2018年08月06日 - 18:08</p>
+  <p><span>原始链接:</span><a href="/e06690c7.html" title="Erlang并发编程（一）">http://hellolife.top/e06690c7.html</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://hellolife.top/e06690c7.html"  aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i>转载请保留原文链接及作者。</p>  
 </div>
@@ -566,9 +565,7 @@
           
             <a href="/tags/Erlang/" rel="tag"><i class="fa fa-tag"></i>Erlang</a>
           
-            <a href="/tags/Gen-server/" rel="tag"><i class="fa fa-tag"></i>Gen_server</a>
-          
-            <a href="/tags/OTP/" rel="tag"><i class="fa fa-tag"></i>OTP</a>
+            <a href="/tags/并发编程/" rel="tag"><i class="fa fa-tag"></i>并发编程</a>
           
         </div>
       
@@ -581,8 +578,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/9e399184.html" rel="next" title="Erlang-ETS存储数据">
-                <i class="fa fa-chevron-left"></i> Erlang-ETS存储数据
+              <a href="/d0707c1f.html" rel="next" title="Erlang并发编程（二）">
+                <i class="fa fa-chevron-left"></i> Erlang并发编程（二）
               </a>
             
           </div>
@@ -590,10 +587,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/d0707c1f.html" rel="prev" title="Erlang并发编程（二）">
-                Erlang并发编程（二） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -770,7 +763,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#start-link"><span class="nav-number">1.</span> <span class="nav-text">start_link</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#同步调用–call"><span class="nav-number">2.</span> <span class="nav-text">同步调用–call</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异步请求——Cast"><span class="nav-number">3.</span> <span class="nav-text">异步请求——Cast</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#停止"><span class="nav-number">4.</span> <span class="nav-text">停止</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#独立Gen-Server"><span class="nav-number">5.</span> <span class="nav-text">独立Gen_Server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#处理其他消息"><span class="nav-number">6.</span> <span class="nav-text">处理其他消息</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建进程"><span class="nav-number">1.</span> <span class="nav-text">创建进程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发消息"><span class="nav-number">2.</span> <span class="nav-text">发消息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#收消息"><span class="nav-number">3.</span> <span class="nav-text">收消息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注册进程"><span class="nav-number">4.</span> <span class="nav-text">注册进程</span></a></li></ol></div>
             
 
           </div>
