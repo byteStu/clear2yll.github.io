@@ -150,18 +150,18 @@
 
 
 
-<meta name="description" content="1, start_link12start_link() -&amp;gt;    gen_server:start_link(&amp;#123;local, ch3&amp;#125;, ch3, [], []) =&amp;gt; &amp;#123;ok, Pid&amp;#125; 调用gen_server:start_link/4，创建并且注册一个新进程  第一个参数：local表示在本地注册，用模块名ch3作为进程注册的名称 第二个">
+<meta name="description" content="start_link12start_link() -&amp;gt;    gen_server:start_link(&amp;#123;local, ch3&amp;#125;, ch3, [], []) =&amp;gt; &amp;#123;ok, Pid&amp;#125; 调用gen_server:start_link/4，创建并且注册一个新进程  第一个参数：local表示在本地注册，用模块名ch3作为进程注册的名称 第二个参数：">
 <meta name="keywords" content="Erlang,Gen_server,OTP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Erlang-gen_server">
 <meta property="og:url" content="http://hellolife.top/1593793e.html">
 <meta property="og:site_name" content="突然冷风吹">
-<meta property="og:description" content="1, start_link12start_link() -&amp;gt;    gen_server:start_link(&amp;#123;local, ch3&amp;#125;, ch3, [], []) =&amp;gt; &amp;#123;ok, Pid&amp;#125; 调用gen_server:start_link/4，创建并且注册一个新进程  第一个参数：local表示在本地注册，用模块名ch3作为进程注册的名称 第二个">
+<meta property="og:description" content="start_link12start_link() -&amp;gt;    gen_server:start_link(&amp;#123;local, ch3&amp;#125;, ch3, [], []) =&amp;gt; &amp;#123;ok, Pid&amp;#125; 调用gen_server:start_link/4，创建并且注册一个新进程  第一个参数：local表示在本地注册，用模块名ch3作为进程注册的名称 第二个参数：">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-06T09:53:44.316Z">
+<meta property="og:updated_time" content="2018-08-06T09:57:07.564Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Erlang-gen_server">
-<meta name="twitter:description" content="1, start_link12start_link() -&amp;gt;    gen_server:start_link(&amp;#123;local, ch3&amp;#125;, ch3, [], []) =&amp;gt; &amp;#123;ok, Pid&amp;#125; 调用gen_server:start_link/4，创建并且注册一个新进程  第一个参数：local表示在本地注册，用模块名ch3作为进程注册的名称 第二个">
+<meta name="twitter:description" content="start_link12start_link() -&amp;gt;    gen_server:start_link(&amp;#123;local, ch3&amp;#125;, ch3, [], []) =&amp;gt; &amp;#123;ok, Pid&amp;#125; 调用gen_server:start_link/4，创建并且注册一个新进程  第一个参数：local表示在本地注册，用模块名ch3作为进程注册的名称 第二个参数：">
 
 
 
@@ -412,7 +412,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  805
+                  799
                 </span>
               
 
@@ -449,7 +449,7 @@
       
 
       
-        <h3 id="1-start-link"><a href="#1-start-link" class="headerlink" title="1, start_link"></a>1, start_link</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">start_link() -&gt;</span><br><span class="line">    gen_server:start_link(&#123;local, ch3&#125;, ch3, [], []) =&gt; &#123;ok, Pid&#125;</span><br></pre></td></tr></table></figure>
+        <h3 id="start-link"><a href="#start-link" class="headerlink" title="start_link"></a>start_link</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">start_link() -&gt;</span><br><span class="line">    gen_server:start_link(&#123;local, ch3&#125;, ch3, [], []) =&gt; &#123;ok, Pid&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>调用</strong>gen_server:start_link/4，创建并且注册一个新进程</p>
 <ul>
 <li>第一个参数：local表示在本地注册，用模块名ch3作为进程注册的名称</li>
@@ -460,7 +460,7 @@
 </ul>
 <a id="more"></a>
 <hr>
-<h3 id="2-同步调用–call"><a href="#2-同步调用–call" class="headerlink" title="2, 同步调用–call"></a>2, 同步调用–call</h3>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">do_some() -&gt;</span><br><span class="line">  gen_server:call(ch3, alloc).</span><br></pre></td></tr></table></figure>
+<h3 id="同步调用–call"><a href="#同步调用–call" class="headerlink" title="同步调用–call"></a>同步调用–call</h3>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">do_some() -&gt;</span><br><span class="line">  gen_server:call(ch3, alloc).</span><br></pre></td></tr></table></figure>
 <ul>
 <li>第一个参数：ch3是注册的gen_server进程名字</li>
 <li>第二个参数：是具体传递的参数，为term()，即erlang数据类型</li>
@@ -468,18 +468,18 @@
 </ul>
 <p><strong>请求</strong>以消息的形式发给gen_server进程ch3，当gen_server进程收到消息后回调handle_call(Request, From, State),它应返回一个元组 {reply, Reply, State1}。Reply是需要回馈给客户端的答复，同时 State1 是gen_server的状态的新值。</p>
 <hr>
-<h3 id="3，异步请求——Cast"><a href="#3，异步请求——Cast" class="headerlink" title="3，异步请求——Cast"></a>3，异步请求——Cast</h3><p>异步请求 free(ch) 使用 gen_server:cast/2 实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">free(Ch) -&gt;</span><br><span class="line">    gen_server:cast(ch3, &#123;free, Chr&#125;).</span><br></pre></td></tr></table></figure></p>
+<h3 id="异步请求——Cast"><a href="#异步请求——Cast" class="headerlink" title="异步请求——Cast"></a>异步请求——Cast</h3><p>异步请求 free(ch) 使用 gen_server:cast/2 实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">free(Ch) -&gt;</span><br><span class="line">    gen_server:cast(ch3, &#123;free, Chr&#125;).</span><br></pre></td></tr></table></figure></p>
 <p>ch3 是gen_server的名称。 {free, Ch} 是实际的请求。</p>
 <p>请求被装在一个消息中发给gen_server的 cast ，这调用了 free ，然后返回了 ok 。</p>
 <p>当gen_server收到请求之后，它会调用 handle_cast(Request, Stats) ，会返回一个元组 {noreply, State1} 。 State1 是gen_server状态的新值。</p>
 <p>handle_cast({free, Ch}, Chs) -&gt;<br>    Chs2 = free(Ch, Chs),<br>    {noreply, Chs2}.<br>在这里，新的状态便是更新过的可用频道列表 Chs2 。gen_server现在又可以接受新的请求了。</p>
 <hr>
-<h3 id="4-停止"><a href="#4-停止" class="headerlink" title="4, 停止"></a>4, 停止</h3><p>在==监督树中==<br>若gen_server是某个监督树的一部分，则无需停止函数。它的督程会自动终止它。它的具体做法由督程中设置的 关闭策略 定义。</p>
+<h3 id="停止"><a href="#停止" class="headerlink" title="停止"></a>停止</h3><p>在==监督树中==<br>若gen_server是某个监督树的一部分，则无需停止函数。它的督程会自动终止它。它的具体做法由督程中设置的 关闭策略 定义。</p>
 <p>如果在终止之前需要进行一些清理工作，那么关闭策略必须是一个超时值，同时gen_server必须在 init 函数中设置为捕获退出信号。当gen_server被要求关闭时，它就会调用回调函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">terminate(shutdown, State) ：</span><br><span class="line"></span><br><span class="line">init(Args) -&gt;</span><br><span class="line">    ...,</span><br><span class="line">    process_flag(trap_exit, true),</span><br><span class="line">    ...,</span><br><span class="line">    &#123;ok, State&#125;.</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">terminate(shutdown, State) -&gt;</span><br><span class="line">    ..code for cleaning up here..</span><br><span class="line">    ok.</span><br></pre></td></tr></table></figure></p>
-<h3 id="5-独立Gen-Server"><a href="#5-独立Gen-Server" class="headerlink" title="5, 独立Gen_Server"></a>5, 独立Gen_Server</h3><p>如果gen_server并非某个监督树的一部分，那么可以用一个停止函数，例如：</p>
+<h3 id="独立Gen-Server"><a href="#独立Gen-Server" class="headerlink" title="独立Gen_Server"></a>独立Gen_Server</h3><p>如果gen_server并非某个监督树的一部分，那么可以用一个停止函数，例如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">export([stop/0]).</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">stop() -&gt;</span><br><span class="line">    gen_server:cast(ch3, stop).</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">handle_cast(stop, State) -&gt;</span><br><span class="line">    &#123;stop, normal, State&#125;;</span><br><span class="line">handle_cast(&#123;free, Ch&#125;, State) -&gt;</span><br><span class="line">    ....</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">terminate(normal, State) -&gt;</span><br><span class="line">    ok.</span><br></pre></td></tr></table></figure>
 <p>回调函数处理 stop 请求并返回一个元组 {stop, normal, State1} ，其中 normal 表示这是一个正常的终止， State1 是gen_server状态的新值。这会引发gen_server调用 terminate(normal, State1) 来优雅地终止。</p>
-<h3 id="6-处理其他消息"><a href="#6-处理其他消息" class="headerlink" title="6, 处理其他消息"></a>6, 处理其他消息</h3><p>如果要想gen_server还能处理请求之外的消息，必须实现回调函数 handle_info(Info, State) 来处理他们。例如，如果gen_server联结到其它进程（非督程）上并捕获退出信号，那么其它的消息就有退出消息。</p>
+<h3 id="处理其他消息"><a href="#处理其他消息" class="headerlink" title="处理其他消息"></a>处理其他消息</h3><p>如果要想gen_server还能处理请求之外的消息，必须实现回调函数 handle_info(Info, State) 来处理他们。例如，如果gen_server联结到其它进程（非督程）上并捕获退出信号，那么其它的消息就有退出消息。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">handle_info(&#123;&apos;EXIT&apos;, Pid, Reason&#125;, State) -&gt;</span><br><span class="line">    ..code to handle exits here..</span><br><span class="line">    &#123;noreply, State1&#125;.</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>参考链接：<br><a href="https://cloud.tencent.com/developer/section/1122601" target="_blank" rel="noopener">[1] 腾讯云开发者手册</a><br><a href="http://www.cnerlang.com/lib/stdlib-3.1/doc/html/index.html" target="_blank" rel="noopener">[2] Erlang在线手册</a></p>
@@ -691,7 +691,7 @@
                 <a href="/archives/">
               
                   <span class="site-state-item-count">4</span>
-                  <span class="site-state-item-name">日志</span>
+                  <span class="site-state-item-name">博文</span>
                 </a>
               </div>
             
@@ -766,7 +766,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-start-link"><span class="nav-number">1.</span> <span class="nav-text">1, start_link</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-同步调用–call"><span class="nav-number">2.</span> <span class="nav-text">2, 同步调用–call</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3，异步请求——Cast"><span class="nav-number">3.</span> <span class="nav-text">3，异步请求——Cast</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-停止"><span class="nav-number">4.</span> <span class="nav-text">4, 停止</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-独立Gen-Server"><span class="nav-number">5.</span> <span class="nav-text">5, 独立Gen_Server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-处理其他消息"><span class="nav-number">6.</span> <span class="nav-text">6, 处理其他消息</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#start-link"><span class="nav-number">1.</span> <span class="nav-text">start_link</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#同步调用–call"><span class="nav-number">2.</span> <span class="nav-text">同步调用–call</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异步请求——Cast"><span class="nav-number">3.</span> <span class="nav-text">异步请求——Cast</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#停止"><span class="nav-number">4.</span> <span class="nav-text">停止</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#独立Gen-Server"><span class="nav-number">5.</span> <span class="nav-text">独立Gen_Server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#处理其他消息"><span class="nav-number">6.</span> <span class="nav-text">处理其他消息</span></a></li></ol></div>
             
 
           </div>

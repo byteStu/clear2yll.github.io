@@ -4,18 +4,16 @@
 
     
   <url>
-    <loc>http://hellolife.top/1593793e.html</loc>
-    <lastmod>2018-08-06T09:53:44.316Z</lastmod>
+    <loc>http://hellolife.top/9e399184.html</loc>
+    <lastmod>2018-08-06T09:59:07.500Z</lastmod>
     <data>
         <display>
-        <title>Erlang-gen_server</title>
-        <pubTime>2018-08-06T09:47:52.891Z</pubTime>
+        <title>Erlang-ETS存储数据</title>
+        <pubTime>2018-08-06T09:08:08.447Z</pubTime>
         
         <tag>Erlang</tag>
          
-        <tag>Gen_server</tag>
-         
-        <tag>OTP</tag>
+        <tag>ETS</tag>
          
          
            
@@ -28,16 +26,18 @@
 
     
   <url>
-    <loc>http://hellolife.top/9e399184.html</loc>
-    <lastmod>2018-08-06T09:38:42.500Z</lastmod>
+    <loc>http://hellolife.top/1593793e.html</loc>
+    <lastmod>2018-08-06T09:57:07.564Z</lastmod>
     <data>
         <display>
-        <title>Erlang-ETS存储数据</title>
-        <pubTime>2018-08-06T09:08:08.447Z</pubTime>
+        <title>Erlang-gen_server</title>
+        <pubTime>2018-08-06T09:47:52.891Z</pubTime>
         
         <tag>Erlang</tag>
          
-        <tag>ETS</tag>
+        <tag>Gen_server</tag>
+         
+        <tag>OTP</tag>
          
          
            

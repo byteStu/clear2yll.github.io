@@ -158,7 +158,7 @@
 <meta property="og:site_name" content="突然冷风吹">
 <meta property="og:description" content="ETS(Erlang Term Storage)Erlang数据存储（内存级别） ETS有四种表类型：异键(Set)、有序异键(ordered_set)、同键(bag)、副本同键(duplicate_bag)  Set：键唯一 ordered_set：键唯一，元组会被排序 bag：多个元组可拥有相同的键，但不能有两个完全相同的元组（同键不同组） duplicate_bag：多个元组可拥有相同的键，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-06T09:38:42.500Z">
+<meta property="og:updated_time" content="2018-08-06T09:59:07.500Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Erlang-ETS存储数据">
 <meta name="twitter:description" content="ETS(Erlang Term Storage)Erlang数据存储（内存级别） ETS有四种表类型：异键(Set)、有序异键(ordered_set)、同键(bag)、副本同键(duplicate_bag)  Set：键唯一 ordered_set：键唯一，元组会被排序 bag：多个元组可拥有相同的键，但不能有两个完全相同的元组（同键不同组） duplicate_bag：多个元组可拥有相同的键，">
@@ -412,7 +412,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,136
+                  1,132
                 </span>
               
 
@@ -458,7 +458,7 @@
 </ul>
 <a id="more"></a>
 <hr>
-<h3 id="一，创建表"><a href="#一，创建表" class="headerlink" title="一，创建表"></a>一，创建表</h3><figure class="highlight erl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ets:new(Name,Options)   <span class="comment">%% 返回一个表标识符，唯一标识该表</span></span><br></pre></td></tr></table></figure>
+<h3 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h3><figure class="highlight erl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ets:new(Name,Options)   <span class="comment">%% 返回一个表标识符，唯一标识该表</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li>参数</li>
 </ul>
@@ -467,9 +467,9 @@
 <li>Options：参数列表<br>当Options为[]时，默认参数相当于<code>[set, protected, {keypos,1}, {heir,none}, {write_concurrency,false}, {read_concurrency,false}]</code><br><br><strong>第一个选项</strong>：==set== | ==ordered_set== | ==bag== | ==duplicate_bag==<br><br><strong>第二个选项</strong>：private（唯有主管进程可读写），public（任何进程都可读写），protected（主管进程可读写，其他进程可读）<br><br><strong>named_table</strong>：如果设置此项，Name就可以被用于后续操作，相当于表标识符<br><br><strong>{keypos,K}</strong>：用K作为键的位置</li>
 </ol>
 <figure class="highlight erl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">new</span><span class="params">(Name, Options)</span> -&gt;</span> tid() | atom()</span><br><span class="line">   Types:</span><br><span class="line">   Name = atom()</span><br><span class="line">   Options = [Option]</span><br><span class="line">   Option = </span><br><span class="line">       Type |</span><br><span class="line">       Access |</span><br><span class="line">       named_table |</span><br><span class="line">       &#123;keypos, Pos&#125; |</span><br><span class="line">       &#123;heir, Pid :: pid(), HeirData&#125; |</span><br><span class="line">       &#123;heir, none&#125; |</span><br><span class="line">       Tweaks</span><br><span class="line">   Type = type()</span><br><span class="line">   Access = access()</span><br><span class="line">   Tweaks = </span><br><span class="line">       &#123;write_concurrency, boolean()&#125; |</span><br><span class="line">       &#123;read_concurrency, boolean()&#125; |</span><br><span class="line">       compressed</span><br><span class="line">   Pos = integer() &gt;= <span class="number">1</span></span><br><span class="line">   HeirData = term()</span><br></pre></td></tr></table></figure>
-<h3 id="二，删除表"><a href="#二，删除表" class="headerlink" title="二，删除表"></a>二，删除表</h3><figure class="highlight erl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ets:delete(TableId)</span><br><span class="line">ets:delete(TableId,Key)</span><br></pre></td></tr></table></figure>
-<h3 id="三，插入表"><a href="#三，插入表" class="headerlink" title="三，插入表"></a>三，插入表</h3><figure class="highlight erl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ets:insert(Tab,objectOrObjects)</span><br></pre></td></tr></table></figure>
-<h3 id="四，查询表"><a href="#四，查询表" class="headerlink" title="四，查询表"></a>四，查询表</h3><figure class="highlight erl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ets:lookup(Tab,Key) <span class="comment">%%根据键查询</span></span><br><span class="line">ets:i(Tab) <span class="comment">%% 展示，没错，仅仅是展示所有记录</span></span><br></pre></td></tr></table></figure>
+<h3 id="删除表"><a href="#删除表" class="headerlink" title="删除表"></a>删除表</h3><figure class="highlight erl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ets:delete(TableId)</span><br><span class="line">ets:delete(TableId,Key)</span><br></pre></td></tr></table></figure>
+<h3 id="插入表"><a href="#插入表" class="headerlink" title="插入表"></a>插入表</h3><figure class="highlight erl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ets:insert(Tab,objectOrObjects)</span><br></pre></td></tr></table></figure>
+<h3 id="查询表"><a href="#查询表" class="headerlink" title="查询表"></a>查询表</h3><figure class="highlight erl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ets:lookup(Tab,Key) <span class="comment">%%根据键查询</span></span><br><span class="line">ets:i(Tab) <span class="comment">%% 展示，没错，仅仅是展示所有记录</span></span><br></pre></td></tr></table></figure>
 <h4 id="match，match-object的查询"><a href="#match，match-object的查询" class="headerlink" title="match，match_object的查询"></a>match，match_object的查询</h4><ol>
 <li>关于match/3和match/1<a href="https://erldoc.com/mod/ets/match_1.html?search=ets:&amp;i=20" target="_blank" rel="noopener">点击了解更多match/1和match/3信息</a><br><br><strong>ets:match(Tab,Pattern,Limit)</strong>：Pattern通常为<code>&#39;$数字&#39;这样的原子类型，表示占位符（当有两个相同占位符时，表示这两个位置上的元素要相同）即要显示的结果 ，或{&#39;_&#39;,dog,&#39;$1&#39;}这样的元组，&#39;_&#39;表示通配符。Limit表示拿出几条记录，int型</code>。</li>
 </ol>
@@ -708,7 +708,7 @@
                 <a href="/archives/">
               
                   <span class="site-state-item-count">4</span>
-                  <span class="site-state-item-name">日志</span>
+                  <span class="site-state-item-name">博文</span>
                 </a>
               </div>
             
@@ -783,7 +783,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ETS-Erlang-Term-Storage-Erlang数据存储（内存级别）"><span class="nav-number">1.</span> <span class="nav-text">ETS(Erlang Term Storage)Erlang数据存储（内存级别）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一，创建表"><span class="nav-number">1.1.</span> <span class="nav-text">一，创建表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二，删除表"><span class="nav-number">1.2.</span> <span class="nav-text">二，删除表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三，插入表"><span class="nav-number">1.3.</span> <span class="nav-text">三，插入表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四，查询表"><span class="nav-number">1.4.</span> <span class="nav-text">四，查询表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#match，match-object的查询"><span class="nav-number">1.4.1.</span> <span class="nav-text">match，match_object的查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#select-的查询"><span class="nav-number">1.4.2.</span> <span class="nav-text">select 的查询</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ETS-Erlang-Term-Storage-Erlang数据存储（内存级别）"><span class="nav-number">1.</span> <span class="nav-text">ETS(Erlang Term Storage)Erlang数据存储（内存级别）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建表"><span class="nav-number">1.1.</span> <span class="nav-text">创建表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除表"><span class="nav-number">1.2.</span> <span class="nav-text">删除表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插入表"><span class="nav-number">1.3.</span> <span class="nav-text">插入表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查询表"><span class="nav-number">1.4.</span> <span class="nav-text">查询表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#match，match-object的查询"><span class="nav-number">1.4.1.</span> <span class="nav-text">match，match_object的查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#select-的查询"><span class="nav-number">1.4.2.</span> <span class="nav-text">select 的查询</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
